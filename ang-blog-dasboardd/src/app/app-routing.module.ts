@@ -6,6 +6,7 @@ import { PostlarComponent } from './posts/postlar/postlar.component';
 import { YeniPostComponent } from './posts/yeni-post/yeni-post.component';
 import { GirisComponent } from './auth/giris/giris.component';
 import { AuthGuard } from './services/auth.guard';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 
 const routes: Routes = [
   {path:'', component: DashboardComponent,canActivate:[AuthGuard]},
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path:'kategoriler', component: KategorilerComponent,canActivate:[AuthGuard]},
   {path:'posts', component:PostlarComponent,canActivate:[AuthGuard]},
   {path:'posts/yeni', component:YeniPostComponent,canActivate:[AuthGuard]},
-  {path:'subscriber', component:YeniPostComponent,canActivate:[AuthGuard]}
+  {path:'subscribers', component:SubscribersComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
