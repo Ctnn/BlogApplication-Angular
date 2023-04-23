@@ -1,0 +1,34 @@
+<section class="featured-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class = "col-md-12 text-center mt-5">
+                <h3 class="text-white">Öne Çıkanlar</h3>
+                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quaerat placeat, quod libero fugit est error sed, quam quasi sit nulla alias autem, voluptatibus quia consectetur facere accusantium. Eligendi, magni.</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3" *ngFor="let featuredPost of featuredPostsArray">
+                <app-gonderi-kart [postData]="featuredPost" ></app-gonderi-kart>
+            </div>
+           
+        </div>
+    </div>
+  
+
+</section>
+
+
+<section class="container mt-5">
+    <div class="col-md-12 text-center">
+        <h2>Latest Posts</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima, rem.</p>
+    </div>
+
+        <div class="row">
+           <div class="col-md-4 mt-3 card " *ngFor="let latestPost of latestPostsArray">
+                <app-gonderi-kart [postData]="latestPost" ></app-gonderi-kart>
+           </div>
+        </div>
+</section>
+

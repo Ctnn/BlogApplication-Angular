@@ -1,0 +1,9 @@
+
+
+.app-body{
+    background-color: var(--primary-color);
+    color: var(--body-text-color);
+   min-height: 45vh;
+   margin-top: 150px;
+    
+}

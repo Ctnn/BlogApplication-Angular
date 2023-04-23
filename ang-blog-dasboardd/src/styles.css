@@ -1,0 +1,90 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+/*Font dosyamı aktarıyorum Open Sans Tercih Ettim*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+
+@import "~ngx-toastr/toastr";
+:root{
+    /* !important 'ın önemi bootstrapte yazan primary color'ı override etmek */
+    --primary-color: #F8FAFD!important;
+    --secondary-color: #F0C9B3!important;
+    --navbar-footer-color: #F0C9B3!important;
+    --body-text-color: #000000!important;
+    --navbar-text-color:#3A4660!important;
+    --footer-text-color:#3A4660!important;
+    --abone-color:#F0C9B3!important;
+    --one-cikan-color:#FFF0DF!important;
+    --comment-box-color: #DCDBDB!important;
+    
+}
+
+body{
+
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--body-text-color);
+    display: contents;
+    /*padding-top: 150px; */
+    font-size: 12px;
+}
+
+.site-logo{
+    padding:5px 20px;
+    border-radius: 20px;
+}
+
+.nav-link{
+    color:var(--primary-color);
+}   
+
+.shadow-effect{
+    box-shadow: 0px 0px 33px -10px rgba(71,114,254,0.3);
+}
+
+.bg-theme{
+    background-color:#FFF0DF!important;
+    margin-top:150px;
+}
+
+.bg-secondary-theme{
+    background-color:var(--secondary-color);
+}
+
+.text-theme-primary{
+    color:var(--body-text-color);
+}
+
+
+input[type=text],input[type = email]{
+    height:60px;
+    padding-left:20px;
+    width:100%;
+    font-size:13px
+}
+
+.btn-sub{
+    height:58px;
+    border:none;
+    font-size:13px;
+    background-color: var(--primary-color);
+
+}
+
+.category-edit{
+    background-color: var(--one-cikan-color);
+}
+ 
+
+.btn-theme{
+    height: 58px;
+    border:none;
+    font-size:13px;
+    background-color: var(--primary-color);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  

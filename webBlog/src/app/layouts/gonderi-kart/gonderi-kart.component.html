@@ -1,0 +1,15 @@
+<div class="card shadow-effect" *ngIf="postData" [routerLink]="['/gonderi',postData.id]">
+    <img src="{{postData.data.postImgPath}}" alt="post-image" class="card-img-top">
+    <div class="card-body">
+        <small class="bg-light text-danger text-center">{{postData.data.kategori.kategori}}</small>
+        <!--
+        
+      <small class="bg-light text-info text-center ml-5">Views - {{postData.data.views}}</small>
+        -->
+        <small class="bg-light text-success text-center ml-5">Öne Çıkan</small>
+        <h5 class="mt-1">{{postData.data.baslik}}</h5>
+        <p>{{postData.data.alinti}}</p>
+
+     
+    </div>
+</div>

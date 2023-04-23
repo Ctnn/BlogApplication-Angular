@@ -1,0 +1,12 @@
+header{
+    height: 100px;
+    margin-top: 10px;
+    display:flex;
+    justify-content: center; /* logo ortalanır */
+}
+
+.logo img{
+    height: 200px;
+
+}
+

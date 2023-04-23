@@ -1,0 +1,157 @@
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="text-theme-primary">Yeni Post {{formStatus}}</h3>
+                <p class="mb-5">Bu kısımdan yeni postlar {{formStatus}}yebilirsin</p>
+            </div>
+        </div>
+        
+        <div *ngIf="postForm">
+
+          <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="card shadow-effect">
+                        <div class="card-body">
+                            
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control"
+                                 (keyup)="onTitleChanged($event)"
+                                 formControlName="baslik"
+                                 [ngClass]="{'is-invalid':fc['baslik'].touched && fc['baslik'].invalid}"
+                                 >
+                                 
+                                 <div *ngIf="fc['baslik'].errors?.['required']">
+                                    <div class="alert alert-danger" *ngIf="fc['baslik'].touched && fc['baslik'].invalid">
+                                      Başlık Zorunludur..
+                                    </div>
+                                  </div>
+                                  <div *ngIf="fc['baslik'].errors?.['minlength']">
+                                    <div class="alert alert-danger" *ngIf="fc['baslik'].touched && fc['baslik'].invalid">
+                                      Başlık en az 10 karakter olmalıdır..
+                                    </div>
+                                  </div>
+                            </div>
+                            <!--PostURL/UniqueLink -->
+                            <div class="form-group">
+                                <label>Kalıcı Bağlantı Uzantınız</label>
+                                <input type="text" [readonly]="true" class="form-control" 
+                                [(ngModel)]='permalink' name="baglanti"  formControlName="baglanti"
+                                [ngClass]="{'is-invalid':fc['baglanti'].touched && fc['baglanti'].invalid}"
+                                >
+
+                                <div *ngIf="fc['baglanti'].errors?.['required']">
+                                    <div class="alert alert-danger" *ngIf="fc['baglanti'].touched && fc['baglanti'].invalid">
+                                      Bağlantı Zorunludur..
+                                    </div>
+                                  </div>
+
+            
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Alıntı</label>
+                                <textarea class="form-control" cols="30" rows="10"
+                                 formControlName="alinti"
+                                 [ngClass]="{'is-invalid':fc['alinti'].touched && fc['alinti'].invalid}"
+                                 ></textarea>
+                                <div *ngIf="fc['alinti'].errors?.['required']">
+                                    <div class="alert alert-danger" *ngIf="fc['alinti'].touched && fc['alinti'].invalid">
+                                      Alıntı Zorunludur..
+                                    </div>
+                                  </div>
+
+                                  <div *ngIf="fc['alinti'].errors?.['minlength']">
+                                    <div class="alert alert-danger" *ngIf="fc['alinti'].touched && fc['alinti'].invalid">
+                                      Alıntı en az 50 karakter olmalıdır..
+                                    </div>
+                                  </div>
+                            </div>
+
+                        
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="card shadow-effect">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="">Lütfen Post Kategorinizi Seçiniz..</label>
+                                <select class="form-control"
+                                 formControlName="kategori"
+                                 [ngClass]="{'is-invalid':fc['kategori'].touched && fc['kategori'].invalid}">
+                                    <option value="">Lütfen Kategori Seçiniz..</option>
+                                    <option *ngFor="let category of categories" value="{{category.id}}-{{category.data.category}}">{{category.data.category}}</option>
+                                </select>
+                                <div *ngIf="fc['kategori'].errors?.['required']">
+                                    <div class="alert alert-danger" *ngIf="fc['kategori'].touched && fc['kategori'].invalid">
+                                      Kategori Zorunludur..
+                                    </div>
+                                </div>
+                            </div>
+                            
+        
+                            <div class="form-group">
+                                <label for="">Post Resmi</label>
+                                <img [src]="imgSrc" class="form-control img-fluid img-preview">
+                                <input type="file" class="form-control" accept="images/*" (change)="showPreview($event)" 
+                                formControlName="postImg"
+                                [ngClass]="{'is-invalid':fc['postImg'].touched && fc['postImg'].invalid}"
+                                >
+                                <div *ngIf="fc['postImg'].errors?.['required']">
+                                    <div class="alert alert-danger" *ngIf="fc['postImg'].touched && fc['postImg'].invalid">
+                                      Post Resmi Zorunludur..
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+            <div class="row mt-3 mb-5">
+                <div class="col-md-12">
+                    <div class="card shadow-effect">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="">İçerik</label>
+                                <angular-editor placeholder="İçeriğini Buraya Ekleyebilirsin"
+                                 formControlName="icerik">
+                                </angular-editor>
+                                <div *ngIf="fc['icerik'].errors?.['required']">
+                                    <div class="alert alert-danger" *ngIf="fc['icerik'].touched && fc['icerik'].invalid">
+                                      İçerik Zorunludur..
+                                    </div>
+                                  </div>
+
+                                  <div *ngIf="fc['icerik'].errors?.['minlength']">
+                                    <div class="alert alert-danger" *ngIf="fc['icerik'].touched && fc['icerik'].invalid">
+                                      İcerik en az 50 karakter olmalıdır..
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 text-center mb-5">
+                    <button class="btn btn-info btn-theme mt-3" [disabled]="postForm.invalid">Postu {{formStatus}}</button>
+                    <button class="btn btn-warning btn-theme ml-3 mt-3" routerLink="/posts">Posta Geri Dön</button>
+                </div>
+
+            </div>
+        </form>
+        </div>
+
+      
+    </div>

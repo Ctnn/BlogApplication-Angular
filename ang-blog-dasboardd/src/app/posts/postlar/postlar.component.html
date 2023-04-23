@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow-effect bg-secondary-theme">
+          <div class="card-body text-center">
+            <h3 class="text-theme-center">BLOG GÖNDERİLERİ</h3>
+            <p>Bu kısımdan Blog Postlarını Yönetebilirsin</p>
+            <button class="btn btn.info bg-theme" routerLink="/posts/yeni">Yeni Post Ekle</button>
+            <button class="btn btn-warning ml-2" routerLink="/">Gösterge Paneline Geri Dön..</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <table class="table row-border hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Post Resmi</th>
+                  <th>Başlık</th>
+                  <th>Alıntı</th>
+                  <th>Kategori</th>
+                  <th>Tarih</th>
+                  <th>Eylemler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let post of postsArray; let i = index">
+                    <td class="index">{{i+1}}</td>
+                    <td class="post-img"><img src="{{post.data.postImgPath}}" class="img img-fluid"></td>
+                    <td class="baslik">{{post.data.baslik}}</td>
+                    <td class="alinti">{{post.data.alinti}}</td>
+                    <td class="kategori">{{post.data.kategori.kategori}}</td>
+                    <td class="createdAt">{{post.data.createdAt.toMillis() | date}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" routerLink="/posts/yeni" [queryParams]="{id:post.id}">Düzenle</button>
+                        <button class="btn btn-sm btn-danger ml-2" (click)='onDelete(post.data.postImgPath,post.id)'>Sil</button>
+
+                        <button *ngIf="!post.data.isFeatured" class="btn btn-sm btn-success ml-2" (click)='onFeatured(post.id,true)'>Öne Çıkar</button>
+                        <button *ngIf="post.data.isFeatured" class="btn btn-sm btn-danger ml-2" (click)='onFeatured(post.id,false)'>Özelliği Kaldır</button>
+
+                  
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .table {
+      table-layout: fixed;
+      width: 100%;
+        white-space: normal;
+    }
+  
+    .table td { 
+      text-overflow: ellipsis;
+      width: 300;
+    }
+    td {
+  text-align: left;
+  padding: 8px 12px;
+    }
+    .post-img img {
+  width: 300px;
+  height: 200px;
+}
+td.alinti {
+  width: 25%;
+  white-space: normal;
+  word-break: break-word;
+}
+
+  </style>
+  

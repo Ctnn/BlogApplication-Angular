@@ -1,0 +1,16 @@
+.featured-section {
+  padding-left: 130px;
+  padding-right: 130px;
+  padding-bottom: 130px;
+  
+
+  background-color:var(--one-cikan-color);
+}
+
+.card{
+  max-width: 400px;
+  min-height: 500px;
+  border:none;
+  box-shadow: 0px 0px 35px -10px rgba(71,114,254,0.3);
+
+}
