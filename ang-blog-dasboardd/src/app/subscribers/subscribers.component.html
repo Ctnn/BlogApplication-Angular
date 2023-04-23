@@ -15,34 +15,25 @@
 </div>
        
     <!-- Kategori Listeleme -->
-    <div class="row mt-5">
-        <div class="col-md-12 mb-5"> </div>
-        <div class="col-md-6">
-            <div class="card shadow-effect">
-                <div class="card-body">
-                    <table class="table row-border hover">
-                        <thead>
-                            <tr>
-                                <th>IslemNo</th>
-                                <th>Kategori</th>
-                                <th>İşlemler</th>
-                            </tr>
-                        </thead> 
-                        <tbody>
-                                <tr *ngFor='let subscriber of subscribersArray; let i = index'>
-                                <td>{{i+1}}</td>
-                                <td>{{subscriber.data.name}}</td>
-                                <td>{{subscriber.data.email}}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-danger ml-2" (click)='onDelete(subscriber.id)'>Sil</button>
-                                </td>
-                                </tr>
-                            
-                        </tbody>              
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-        </div>
+    <div class="table-responsive mx-auto">
+        <table class="table row-border hover text-center">
+            <thead>
+                <tr>
+                    <th>IslemNo</th>
+                    <th>Kategori</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead> 
+            <tbody class="text-center">
+                <tr *ngFor='let subscriber of subscribersArray; let i = index'>
+                    <td>{{i+1}}</td>
+                    <td>{{subscriber.data.name}}</td>
+                    <td>{{subscriber.data.email}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger ml-2" (click)='onDelete(subscriber.id)'>Sil</button>
+                    </td>
+                </tr>
+            </tbody>              
+        </table>
     </div>
+    
