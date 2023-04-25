@@ -14,6 +14,10 @@ ng serve --port 4300 - WEBBLOG-ANAPROJE
 
 ng serve --port 4200 - dashboardd-DASHBOARD
 
+dashboardd-DASHBOARD
+http://localhost:port_no/giris
+
+
 !NOT!
 Eğer ng hatası gelirse Ortam Değişkenleri Path kısmına %AppData%\npm eklenmeli
 !!!!!
